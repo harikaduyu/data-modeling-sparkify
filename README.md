@@ -53,7 +53,7 @@ And below is an example of what a single log file, 2018-11-01.json, looks like.
 
 ## Schema for Song Play Analysis
 
-Using the song and log datasets, a star schema is created for optimized queries on song play analysis. This includes the following tables.
+Using the song and log datasets, a star schema is created for optimized queries on song play analysis. The star schema in this case consists of one fact table (songplays) which references the primary keys of dimension tables (users, songs, artists, time). This structure enables analysts to easily aggragate data using simple SQL queries with joins.
 
 ### Fact Table
 
@@ -70,3 +70,42 @@ Using the song and log datasets, a star schema is created for optimized queries 
    - artist_id, name, location, latitude, longitude
 1. time - timestamps of records in songplays broken down into specific units
    - start_time, hour, day, week, month, year, weekday
+
+Duplicate values in the tables are eliminated with the upsert constraints in insert queries.
+
+## Run locally
+
+### Create and run PostgreSQL with docker
+
+Build the image
+
+```
+docker build -t postgres-studetn-image  ./
+```
+
+Run the container
+
+```
+docker run -d --name postgres-student-container -p 5432:5432 postgres-student-image
+```
+
+Stop and remove the container after you're done
+
+```
+docker stop postgres-student-container
+docker rm postgres-student-container
+```
+
+### Create the DB abd run ETL pipeline
+
+Create DB and tables
+
+```
+python create_tables.py
+```
+
+Run ETL pipeline
+
+```
+python etl.py
+```
