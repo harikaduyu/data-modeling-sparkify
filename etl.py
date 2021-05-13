@@ -58,13 +58,13 @@ def process_log_file(cur, filepath):
     # insert time data records
     time_data = (df["ts"], t.dt.hour, t.dt.day, t.dt.isocalendar().week, t.dt.month, t.dt.year, t.dt.weekday )
     column_labels = ("timestamp", "hour", "day", "week of year", "month", "year", "weekday")
-    time_df = pd.DataFrame(dict((zip(column_labels, time_data)))).drop_duplicates()
+    time_df = pd.DataFrame(dict((zip(column_labels, time_data))))
 
     for i, row in time_df.iterrows():
         cur.execute(time_table_insert, list(row))
 
     # load user table
-    user_df = df[["userId","firstName", "lastName","gender","level"]].drop_duplicates()
+    user_df = df[["userId","firstName", "lastName","gender","level"]]
 
     # insert user records
     for i, row in user_df.iterrows():
@@ -83,7 +83,7 @@ def process_log_file(cur, filepath):
             songid, artistid = None, None
 
         # insert songplay record
-        songplay_data =  (index, row.ts, row.userId, row.level, songid,artistid,row.sessionId,row.location, row.userAgent )
+        songplay_data =  (row.ts, row.userId, row.level, songid,artistid,row.sessionId,row.location, row.userAgent )
         cur.execute(songplay_table_insert, songplay_data)
 
 
