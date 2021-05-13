@@ -77,10 +77,12 @@ Duplicate values in the tables are eliminated with the upsert constraints in ins
 
 ### Create and run PostgreSQL with docker
 
+If you don't want to set up PostgreSQL you can run it using docker on your local machine like me.
+
 Build the image
 
 ```
-docker build -t postgres-studetn-image  ./
+docker build -t postgres-student-image  ./
 ```
 
 Run the container
@@ -96,7 +98,7 @@ docker stop postgres-student-container
 docker rm postgres-student-container
 ```
 
-### Create the DB abd run ETL pipeline
+### Create the DB and run ETL pipeline
 
 Create DB and tables
 
