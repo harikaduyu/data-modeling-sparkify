@@ -71,7 +71,7 @@ Using the song and log datasets, a star schema is created for optimized queries 
 1. time - timestamps of records in songplays broken down into specific units
    - start_time, hour, day, week, month, year, weekday
 
-Duplicate values in the tables are eliminated with the upsert constraints in insert queries.
+Duplicate values in the tables are eliminated with the upsert constraints in insert queries. In case the subscription of a user changes to `paid` from `free` we do an update on duplicate to reflect this change in the database.
 
 ## Run locally
 
