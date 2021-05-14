@@ -98,6 +98,22 @@ docker stop postgres-student-container
 docker rm postgres-student-container
 ```
 
+### Set up pipenv and install packages
+
+If you don't have `pipenv` you can check it out [here.](https://pypi.org/project/pipenv/)
+
+Run pipenv install to install packages defined on Pipfile
+
+```
+pipenv install
+```
+
+Run pipenv shell to activate the environement
+
+```
+pipenv shell
+```
+
 ### Create the DB and run ETL pipeline
 
 Create DB and tables
