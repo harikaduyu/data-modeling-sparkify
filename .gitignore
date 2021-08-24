@@ -141,3 +141,4 @@ cython_debug/
 # Ignore Project files
 etl.ipynb
 test.ipynb
+.vscode/
